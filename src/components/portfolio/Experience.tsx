@@ -32,22 +32,24 @@ const items = [
 
 export function Experience() {
   return (
-    <Section id="experience" label="02 — Experience" title="Where I've been building.">
+    <Section id="experience" index="02" label="experience.log" title="Where I've been building.">
       <ol className="relative border-l border-border space-y-12 pl-8">
         {items.map((item, i) => (
           <li key={i} className="relative">
-            <span className="absolute -left-[37px] top-2 h-3 w-3 rounded-full bg-primary ring-4 ring-background" />
+            <span className="absolute -left-[5px] top-3 h-2.5 w-2.5 bg-primary ring-4 ring-background" />
             <div className="flex flex-wrap items-baseline justify-between gap-2 mb-1">
               <h3 className="font-display text-xl md:text-2xl">{item.company}</h3>
-              <span className="text-xs uppercase tracking-widest text-muted-foreground">
+              <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
                 {item.duration}
               </span>
             </div>
-            <p className="text-primary text-sm mb-4">{item.role}</p>
+            <p className="font-mono text-xs text-primary mb-4 uppercase tracking-widest">
+              ▸ {item.role}
+            </p>
             <ul className="space-y-2 text-foreground/75">
               {item.bullets.map((b, j) => (
                 <li key={j} className="flex gap-3">
-                  <span className="text-primary mt-2 h-px w-4 bg-primary/40 flex-shrink-0" />
+                  <span className="text-primary font-mono text-sm mt-0.5 flex-shrink-0">{">"}</span>
                   <span>{b}</span>
                 </li>
               ))}
