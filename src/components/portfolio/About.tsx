@@ -2,8 +2,8 @@ import { Section } from "./Section";
 
 export function About() {
   return (
-    <Section id="about" label="01 — About" title="A researcher's precision, a developer's craft.">
-      <div className="space-y-6 text-lg text-foreground/80 leading-relaxed">
+    <Section id="about" index="01" label="about" title="A researcher's precision, a developer's craft.">
+      <div className="space-y-6 text-base md:text-lg text-foreground/80 leading-relaxed">
         <p>
           I'm a final-year Computer Science student at Manav Rachna University, currently
           interning at KPMG India. I've had hands-on experience building responsive web
@@ -14,13 +14,14 @@ export function About() {
           real-world problem-solving.
         </p>
 
-        <div className="flex flex-wrap gap-3 pt-4">
-          <span className="inline-flex items-center gap-2 text-sm bg-foreground/5 border border-border px-4 py-2 rounded-full">
-            <span className="h-2 w-2 rounded-full bg-primary animate-pulse" />
-            Currently · Intern @ KPMG India — Gurugram
+        <div className="flex flex-wrap gap-3 pt-6">
+          <span className="inline-flex items-center gap-2 font-mono text-xs bg-foreground/[0.03] border border-border px-3 py-2">
+            <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
+            <span className="text-muted-foreground">CURRENT:</span>
+            <span>intern@kpmg.india · gurugram</span>
           </span>
-          <span className="inline-flex items-center gap-2 text-sm bg-primary/10 text-primary border border-primary/30 px-4 py-2 rounded-full">
-            ✦ Willing to relocate — open to opportunities worldwide
+          <span className="inline-flex items-center gap-2 font-mono text-xs text-primary border border-primary/40 px-3 py-2">
+            <span>{"// open to relocation — worldwide"}</span>
           </span>
         </div>
       </div>
