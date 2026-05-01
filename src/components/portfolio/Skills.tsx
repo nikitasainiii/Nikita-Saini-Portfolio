@@ -1,32 +1,38 @@
 import { Section } from "./Section";
 
 const groups = [
-  { label: "Languages", items: ["C/C++", "Python", "JavaScript"] },
-  { label: "Web", items: ["React.js", "HTML", "CSS", "Bootstrap", "Tailwind CSS"] },
-  { label: "Data & DB", items: ["SQL", "Tableau", "PowerBI"] },
-  { label: "Tools", items: ["Git", "GitHub", "VS Code", "MS Office"] },
-  { label: "CS Fundamentals", items: ["OOP", "OS", "CN", "DBMS"] },
+  { key: "languages", items: ["C/C++", "Python", "JavaScript"] },
+  { key: "web", items: ["React.js", "HTML", "CSS", "Bootstrap", "Tailwind CSS"] },
+  { key: "data_db", items: ["SQL", "Tableau", "PowerBI"] },
+  { key: "tools", items: ["Git", "GitHub", "VS Code", "MS Office"] },
+  { key: "cs_fundamentals", items: ["OOP", "OS", "CN", "DBMS"] },
 ];
 
 export function Skills() {
   return (
-    <Section id="skills" label="04 — Skills" title="Tools of the craft.">
-      <div className="space-y-8">
-        {groups.map((g) => (
-          <div key={g.label} className="grid grid-cols-[120px_1fr] md:grid-cols-[160px_1fr] gap-4 items-start">
-            <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground pt-2">{g.label}</p>
-            <div className="flex flex-wrap gap-2">
-              {g.items.map((s) => (
-                <span
-                  key={s}
-                  className="text-sm bg-foreground/[0.03] border border-border px-3.5 py-1.5 rounded-full hover:border-primary hover:text-primary transition-colors"
-                >
-                  {s}
-                </span>
-              ))}
+    <Section id="skills" index="04" label="stack.json" title="Tools of the craft.">
+      <div className="font-mono text-sm border border-border bg-card p-6 md:p-8">
+        <p className="text-muted-foreground mb-4">{"{"}</p>
+        <div className="space-y-5 pl-5">
+          {groups.map((g, gi) => (
+            <div key={g.key} className="flex flex-col md:flex-row md:items-start gap-3">
+              <p className="text-primary md:w-44 flex-shrink-0">
+                "{g.key}"<span className="text-muted-foreground">:</span>
+              </p>
+              <div className="flex flex-wrap gap-1.5 flex-1">
+                <span className="text-muted-foreground">[</span>
+                {g.items.map((s, i) => (
+                  <span key={s} className="text-foreground">
+                    "<span className="hover:text-primary cursor-default transition-colors">{s}</span>"
+                    {i < g.items.length - 1 && <span className="text-muted-foreground">,</span>}
+                  </span>
+                ))}
+                <span className="text-muted-foreground">]{gi < groups.length - 1 ? "," : ""}</span>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
+        <p className="text-muted-foreground mt-4">{"}"}</p>
       </div>
     </Section>
   );
