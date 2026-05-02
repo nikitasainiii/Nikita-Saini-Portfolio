@@ -4,10 +4,10 @@ import { useEffect, useState } from "react";
 const links = [
   { href: "#about", label: "about" },
   { href: "#experience", label: "experience" },
-  { href: "#projects", label: "projects" },
-  { href: "#skills", label: "stack" },
+  { href: "#projects", label: "work" },
+  { href: "#skills", label: "toolkit" },
   { href: "#publications", label: "research" },
-  { href: "#contact", label: "contact" },
+  { href: "#contact", label: "say hello" },
 ];
 
 export function Nav() {
@@ -23,22 +23,19 @@ export function Nav() {
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-background/85 backdrop-blur-md border-b border-border"
+          ? "bg-background/85 backdrop-blur-md border-b border-border/70"
           : "bg-transparent"
       }`}
     >
       <nav className="max-w-6xl mx-auto px-6 md:px-10 h-16 flex items-center justify-between">
-        <Link to="/" className="font-mono text-sm tracking-tight flex items-center gap-2">
-          <span className="inline-block h-2 w-2 bg-primary" />
-          <span>nikita.saini</span>
-          <span className="text-primary">/</span>
-          <span className="text-muted-foreground">v2026</span>
+        <Link to="/" className="font-display italic text-xl tracking-tight flex items-center gap-2">
+          <span className="inline-block h-2 w-2 rounded-full bg-accent" />
+          nikita saini
         </Link>
-        <ul className="hidden md:flex items-center gap-7 font-mono text-xs">
-          {links.map((l, i) => (
+        <ul className="hidden md:flex items-center gap-7 text-sm">
+          {links.map((l) => (
             <li key={l.href}>
               <a href={l.href} className="nav-link text-foreground/70 hover:text-foreground transition-colors">
-                <span className="text-primary mr-1">{String(i + 1).padStart(2, "0")}.</span>
                 {l.label}
               </a>
             </li>
@@ -47,9 +44,9 @@ export function Nav() {
         <a
           href="/ResumeNikita.pdf"
           download
-          className="hidden md:inline-flex items-center gap-2 font-mono text-xs border border-foreground/30 hover:border-primary hover:text-primary transition-colors px-3 py-2"
+          className="hidden md:inline-flex items-center gap-2 text-sm rounded-full border border-foreground/25 hover:border-accent hover:text-accent transition-colors px-4 py-2"
         >
-          <span>resume.pdf</span>
+          <span>résumé</span>
           <span aria-hidden>↓</span>
         </a>
       </nav>

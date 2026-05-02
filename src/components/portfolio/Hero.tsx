@@ -1,80 +1,84 @@
 export function Hero() {
-  const tagWords = ["CS Engineer", "/", "Web Developer", "/", "Data Analyst"];
-
   return (
     <section className="relative min-h-screen flex items-center pt-24 pb-16 overflow-hidden">
-      <div className="absolute inset-0 grid-bg opacity-100 [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_75%)]" />
-
-      {/* Corner technical markers */}
-      <div className="absolute top-20 left-6 md:left-10 font-mono text-[10px] text-muted-foreground tracking-widest">
-        N 28.4595° · E 77.0266°
-      </div>
-      <div className="absolute top-20 right-6 md:right-10 font-mono text-[10px] text-muted-foreground tracking-widest">
-        STATUS: <span className="text-primary">● ONLINE</span>
-      </div>
+      {/* Soft sun behind name */}
+      <div
+        className="pointer-events-none absolute top-1/3 -left-20 h-[420px] w-[420px] rounded-full opacity-60 blur-3xl"
+        style={{ background: "radial-gradient(circle, oklch(0.78 0.13 80 / 0.55), transparent 65%)" }}
+      />
+      <div
+        className="pointer-events-none absolute bottom-10 right-0 h-[360px] w-[360px] rounded-full opacity-50 blur-3xl"
+        style={{ background: "radial-gradient(circle, oklch(0.66 0.13 45 / 0.35), transparent 65%)" }}
+      />
 
       <div className="relative max-w-6xl mx-auto px-6 md:px-10 w-full">
         <p
-          className="font-mono text-xs uppercase tracking-[0.3em] text-primary mb-8 word-in"
+          className="font-hand text-2xl md:text-3xl text-accent mb-4 word-in"
           style={{ animationDelay: "0.1s" }}
         >
-          {"// portfolio · build 2026.01"}
+          hello, I'm —
         </p>
 
-        <h1 className="font-display text-5xl sm:text-6xl md:text-8xl leading-[1.02] font-medium">
-          <span className="word-in inline-block" style={{ animationDelay: "0.2s" }}>Nikita</span>{" "}
-          <span className="word-in inline-block" style={{ animationDelay: "0.35s" }}>Saini</span>
+        <h1 className="font-display text-6xl sm:text-7xl md:text-[8.5rem] leading-[0.95] font-normal">
+          <span className="word-in inline-block italic" style={{ animationDelay: "0.2s" }}>
+            Nikita
+          </span>{" "}
+          <span className="word-in inline-block" style={{ animationDelay: "0.35s" }}>
+            Saini.
+          </span>
         </h1>
 
-        <p className="mt-6 font-mono text-sm md:text-base text-foreground/60 cursor-blink">
-          <span className="text-primary">$</span> whoami
-        </p>
-
-        <p className="mt-3 text-lg md:text-2xl text-foreground/80 font-light flex flex-wrap gap-x-3 gap-y-1">
-          {tagWords.map((w, i) => (
-            <span
-              key={i}
-              className={`word-in ${w === "/" ? "text-primary" : ""}`}
-              style={{ animationDelay: `${0.7 + i * 0.08}s` }}
-            >
-              {w}
-            </span>
-          ))}
-        </p>
-
         <p
-          className="mt-8 max-w-xl text-base md:text-lg text-muted-foreground word-in border-l-2 border-primary/40 pl-4"
-          style={{ animationDelay: "1.2s" }}
+          className="mt-8 max-w-2xl text-lg md:text-2xl text-foreground/80 leading-snug word-in"
+          style={{ animationDelay: "0.7s" }}
         >
-          Building thoughtful digital solutions at the intersection of frontend craft and data intelligence.
+          A final-year computer science student writing software with{" "}
+          <span className="ink-underline">care</span>, curiosity and a quiet love for{" "}
+          <span className="italic font-display">good design</span>.
         </p>
 
         <div
+          className="mt-10 flex flex-wrap items-center gap-3 word-in"
+          style={{ animationDelay: "1s" }}
+        >
+          <span className="pill">
+            <span className="h-2 w-2 rounded-full bg-primary" />
+            Currently at KPMG India
+          </span>
+          <span className="pill">
+            <span>📍</span> Gurugram · open worldwide
+          </span>
+          <span className="pill">
+            <span>🎓</span> Class of 2026
+          </span>
+        </div>
+
+        <div
           className="mt-12 flex flex-wrap gap-4 word-in"
-          style={{ animationDelay: "1.4s" }}
+          style={{ animationDelay: "1.2s" }}
         >
           <a
             href="#projects"
-            className="group inline-flex items-center gap-3 bg-foreground text-background px-6 py-3 font-mono text-xs uppercase tracking-widest hover:bg-primary transition-colors"
+            className="group inline-flex items-center gap-3 bg-foreground text-background px-6 py-3 rounded-full text-sm hover:bg-primary transition-colors"
           >
-            <span>View Work</span>
+            <span>See my work</span>
             <span aria-hidden className="transition-transform group-hover:translate-x-1">→</span>
           </a>
           <a
             href="/ResumeNikita.pdf"
             download
-            className="inline-flex items-center gap-3 border border-foreground/30 hover:border-primary hover:text-primary px-6 py-3 font-mono text-xs uppercase tracking-widest transition-colors"
+            className="inline-flex items-center gap-3 border border-foreground/30 hover:border-accent hover:text-accent px-6 py-3 rounded-full text-sm transition-colors"
           >
-            <span>Download Resume</span>
+            <span>Download résumé</span>
             <span aria-hidden>↓</span>
           </a>
         </div>
       </div>
 
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 font-mono text-[10px] text-muted-foreground tracking-widest uppercase flex items-center gap-2">
-        <span className="h-px w-8 bg-muted-foreground" />
-        scroll
-        <span className="h-px w-8 bg-muted-foreground" />
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 font-hand text-xl text-muted-foreground flex items-center gap-3">
+        <span className="h-px w-8 bg-muted-foreground/60" />
+        scroll, slowly
+        <span className="h-px w-8 bg-muted-foreground/60" />
       </div>
     </section>
   );
