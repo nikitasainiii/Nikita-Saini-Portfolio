@@ -1,11 +1,11 @@
 import { Section } from "./Section";
 
 const items = [
-  { icon: "✦", title: "Top 20 Finalist — IEEE WIEHACK 5.0", note: "out of 100 teams" },
+  { icon: "🏆", title: "Top 20 Finalist — IEEE WIEHACK 5.0", note: "out of 100 teams" },
   { icon: "★", title: "2-Star Coder at CodeChef", note: "300+ problems solved" },
-  { icon: "❀", title: "ALGO QUEEN Contest", note: "competed among 500+ participants" },
-  { icon: "◐", title: "Webmaster, IEEE MRU", note: "managed technical operations for the chapter" },
-  { icon: "✿", title: "Execom Member, Coding Club MRU", note: "organised 10+ events · participation +30%" },
+  { icon: "👑", title: "ALGO QUEEN Contest", note: "competed among 500+ participants" },
+  { icon: "◉", title: "Webmaster, IEEE MRU", note: "led technical operations for the chapter" },
+  { icon: "✦", title: "Execom Member, Coding Club MRU", note: "organised 10+ events · participation +30%" },
 ];
 
 const certs = [
@@ -17,32 +17,31 @@ const certs = [
 
 export function Achievements() {
   return (
-    <Section id="achievements" index="06" label="little wins" title="Moments worth keeping.">
-      <ul className="space-y-px">
-        {items.map((it, i) => (
-          <li
-            key={i}
-            className="group grid grid-cols-[28px_28px_1fr_auto] items-center gap-3 md:gap-5 py-5 border-b border-border/60 last:border-0 hover:pl-3 transition-all duration-300"
-          >
-            <span className="font-mono text-[11px] text-muted-foreground">
-              {String(i + 1).padStart(2, "0")}
-            </span>
-            <span className="text-accent text-xl">{it.icon}</span>
-            <p className="font-display italic text-lg md:text-xl">{it.title}</p>
-            <p className="text-xs text-muted-foreground hidden md:block italic">{it.note}</p>
-          </li>
-        ))}
-      </ul>
-
-      <div className="mt-14">
-        <p className="font-hand text-2xl text-accent mb-5">a few certifications —</p>
-        <div className="grid sm:grid-cols-2 gap-3">
-          {certs.map((c) => (
-            <div key={c.title} className="paper rounded-lg p-4 hover:border-accent/50 transition-colors">
-              <p className="text-sm font-medium leading-snug">{c.title}</p>
-              <p className="text-xs text-muted-foreground mt-1.5 italic">— {c.issuer}</p>
+    <Section id="achievements" index="06" label="Recognition" title="Achievements & Certifications">
+      <div className="max-w-5xl mx-auto space-y-10">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {items.map((it, i) => (
+            <div key={i} className="card-glow grain p-6">
+              <div className="text-3xl mb-3">{it.icon}</div>
+              <p className="font-display font-semibold text-base leading-snug mb-1">{it.title}</p>
+              <p className="text-xs text-muted-foreground">{it.note}</p>
             </div>
           ))}
+        </div>
+
+        <div>
+          <p className="section-eyebrow mb-5">
+            <span className="h-1 w-1 rounded-full bg-primary" />
+            Certifications
+          </p>
+          <div className="grid sm:grid-cols-2 gap-3">
+            {certs.map((c) => (
+              <div key={c.title} className="card-glow p-5">
+                <p className="font-medium text-sm leading-snug mb-1">{c.title}</p>
+                <p className="text-xs text-primary font-mono">▸ {c.issuer}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </Section>

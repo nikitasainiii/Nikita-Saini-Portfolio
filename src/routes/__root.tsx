@@ -39,12 +39,12 @@ export const Route = createRootRoute({
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Caveat:wght@500;600&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap",
       },
       {
         rel: "icon",
         type: "image/svg+xml",
-        href: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23f5efe2'/%3E%3Ctext x='50%25' y='60%25' text-anchor='middle' dominant-baseline='middle' font-family='Georgia,serif' font-style='italic' font-weight='500' font-size='34' fill='%233a5a3f'%3Ens%3C/text%3E%3C/svg%3E",
+        href: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231e1c2e'/%3E%3Ctext x='50%25' y='58%25' text-anchor='middle' dominant-baseline='middle' font-family='Sora,sans-serif' font-weight='700' font-size='28' fill='%23f5b27a'%3ENS%3C/text%3E%3C/svg%3E",
       },
     ],
   }),
