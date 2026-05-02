@@ -1,28 +1,26 @@
 import { Section } from "./Section";
 
 const groups = [
-  { key: "Languages", items: ["C/C++", "Python", "JavaScript"] },
-  { key: "Web", items: ["React.js", "HTML", "CSS", "Bootstrap", "Tailwind CSS"] },
-  { key: "Data & DB", items: ["SQL", "Tableau", "Power BI"] },
-  { key: "Tools", items: ["Git", "GitHub", "VS Code", "MS Office"] },
-  { key: "CS Foundations", items: ["OOP", "Operating Systems", "Networks", "DBMS"] },
+  { key: "Programming", icon: "▲", items: ["C/C++", "Python", "JavaScript"] },
+  { key: "Web Development", icon: "◆", items: ["React.js", "HTML", "CSS", "Bootstrap", "Tailwind CSS"] },
+  { key: "Data & Databases", icon: "◉", items: ["SQL", "Tableau", "Power BI"] },
+  { key: "Tools", icon: "✦", items: ["Git", "GitHub", "VS Code", "MS Office"] },
+  { key: "CS Foundations", icon: "❖", items: ["OOP", "Operating Systems", "Networks", "DBMS"] },
 ];
 
 export function Skills() {
   return (
-    <Section id="skills" index="04" label="the toolkit" title="What I reach for.">
-      <div className="space-y-7">
+    <Section id="skills" index="04" label="Toolkit" title="Technical Skills">
+      <div className="max-w-5xl mx-auto space-y-4">
         {groups.map((g) => (
-          <div key={g.key} className="grid md:grid-cols-[180px_1fr] gap-3 md:gap-6 items-start pb-6 border-b border-border/60 last:border-0">
-            <p className="font-display italic text-lg text-primary">{g.key}</p>
+          <div key={g.key} className="card-glow p-6">
+            <div className="flex items-center gap-3 mb-4">
+              <span className="text-primary text-lg">{g.icon}</span>
+              <h3 className="font-display font-semibold text-lg">{g.key}</h3>
+            </div>
             <div className="flex flex-wrap gap-2">
               {g.items.map((s) => (
-                <span
-                  key={s}
-                  className="pill hover:border-accent hover:text-accent transition-colors cursor-default"
-                >
-                  {s}
-                </span>
+                <span key={s} className="chip-solid chip">{s}</span>
               ))}
             </div>
           </div>

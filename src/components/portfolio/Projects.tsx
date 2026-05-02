@@ -3,71 +3,97 @@ import { Section } from "./Section";
 const projects = [
   {
     id: "01",
-    title: "Doctor Appointment Booking",
+    title: "Doctor Appointment Booking System",
+    tagline: "Healthcare · Web Platform",
     description:
-      "A responsive web platform that lets patients browse doctor availability and request appointments online — replacing slow manual scheduling.",
+      "A responsive web platform that lets patients browse doctor availability and request appointments online — replacing slow manual scheduling workflows with a clean, accessible interface.",
     tech: ["HTML", "CSS", "JavaScript"],
     github: "https://github.com/nikitasainiii",
+    accent: "from-primary/30 to-accent/20",
   },
   {
     id: "02",
-    title: "Elomelo — E-commerce",
+    title: "Elomelo — E-commerce Storefront",
+    tagline: "Retail · Frontend",
     description:
-      "A fully responsive shopping experience with product browsing, cart management, and a frontend tuned for smooth, distraction-free navigation.",
+      "A fully responsive shopping experience with product browsing, cart management, and a frontend tuned for smooth, distraction-free navigation across devices.",
     tech: ["HTML", "CSS", "JavaScript", "Bootstrap"],
     github: "https://github.com/nikitasainiii",
+    accent: "from-accent/30 to-primary/20",
   },
 ];
 
 export function Projects() {
   return (
-    <Section id="projects" index="03" label="selected work" title="Things I've made with care.">
-      <div className="grid sm:grid-cols-2 gap-6">
-        {projects.map((p) => (
+    <Section id="projects" index="03" label="Featured Work" title="Selected Projects">
+      <div className="max-w-5xl mx-auto space-y-6">
+        {projects.map((p, i) => (
           <article
             key={p.title}
-            className="paper group relative rounded-xl p-7 hover:-translate-y-1 transition-all duration-300"
+            className="card-glow grain overflow-hidden grid md:grid-cols-5 gap-0"
           >
-            <div className="flex items-center justify-between mb-4">
-              <span className="font-hand text-xl text-accent">no. {p.id}</span>
-              <span className="pill text-[11px] py-1">
-                <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-                live
-              </span>
+            {/* Visual side */}
+            <div
+              className={`md:col-span-2 relative min-h-[200px] md:min-h-[260px] bg-gradient-to-br ${p.accent} flex items-center justify-center`}
+            >
+              <div className="absolute inset-0 opacity-30" style={{
+                backgroundImage:
+                  "linear-gradient(oklch(0.96 0.005 270 / 0.08) 1px, transparent 1px), linear-gradient(90deg, oklch(0.96 0.005 270 / 0.08) 1px, transparent 1px)",
+                backgroundSize: "32px 32px",
+              }} />
+              <div className="relative font-display font-bold text-7xl md:text-8xl text-foreground/20">
+                {p.id}
+              </div>
+              <div className="absolute top-4 left-4 flex gap-1.5">
+                <span className="h-2.5 w-2.5 rounded-full bg-destructive/70" />
+                <span className="h-2.5 w-2.5 rounded-full bg-primary/70" />
+                <span className="h-2.5 w-2.5 rounded-full bg-accent/70" />
+              </div>
             </div>
-            <h3 className="font-display text-2xl mb-3 leading-snug italic">{p.title}</h3>
-            <p className="text-foreground/70 leading-relaxed mb-5">{p.description}</p>
-            <div className="flex flex-wrap gap-1.5 mb-6">
-              {p.tech.map((t) => (
-                <span key={t} className="pill text-xs py-1 text-muted-foreground">
-                  {t}
-                </span>
-              ))}
-            </div>
-            <div className="flex gap-4 text-sm">
-              <a
-                href={p.github}
-                target="_blank"
-                rel="noreferrer"
-                className="nav-link inline-flex items-center gap-1.5 text-foreground hover:text-accent transition-colors"
-              >
-                view on github <span aria-hidden>↗</span>
-              </a>
-              <span className="text-muted-foreground/60">·</span>
-              <span className="text-muted-foreground italic">demo soon</span>
+
+            {/* Content side */}
+            <div className="md:col-span-3 p-7 md:p-8 flex flex-col justify-between gap-5">
+              <div>
+                <p className="text-xs uppercase tracking-widest text-primary mb-2">{p.tagline}</p>
+                <h3 className="font-display font-semibold text-2xl md:text-3xl mb-3 leading-tight">
+                  {p.title}
+                </h3>
+                <p className="text-foreground/70 leading-relaxed">{p.description}</p>
+              </div>
+
+              <div>
+                <div className="flex flex-wrap gap-2 mb-5">
+                  {p.tech.map((t) => (
+                    <span key={t} className="chip">{t}</span>
+                  ))}
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  <a
+                    href={p.github}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn-ghost text-sm py-2 px-4"
+                  >
+                    <span aria-hidden>◉</span> GitHub
+                  </a>
+                  <span className="btn-ghost text-sm py-2 px-4 opacity-60 cursor-default">
+                    <span aria-hidden>↗</span> Demo soon
+                  </span>
+                </div>
+              </div>
             </div>
           </article>
         ))}
 
-        {/* Placeholder */}
-        <article className="sm:col-span-2 stitch rounded-xl p-7 flex items-center justify-between gap-4">
-          <div>
-            <p className="font-hand text-xl text-accent mb-1">currently brewing —</p>
-            <p className="text-foreground/75">
-              New projects exploring full-stack apps and ML-assisted tools, shipping through 2026.
-            </p>
-          </div>
-          <div className="font-display text-4xl italic text-primary/40 drift">✿</div>
+        <article className="card-glow grain p-8 text-center border-dashed">
+          <p className="section-eyebrow mb-4">
+            <span className="h-1 w-1 rounded-full bg-primary animate-pulse" />
+            More brewing
+          </p>
+          <h3 className="font-display font-semibold text-xl mb-2">New work shipping through 2026</h3>
+          <p className="text-muted-foreground text-sm">
+            Exploring full-stack apps and ML-assisted tools. Stay tuned.
+          </p>
         </article>
       </div>
     </Section>

@@ -32,29 +32,28 @@ const items = [
 
 export function Experience() {
   return (
-    <Section id="experience" index="02" label="the road so far" title="A few good chapters.">
-      <ol className="relative border-l border-border/70 space-y-12 pl-8">
+    <Section id="experience" index="02" label="The Journey" title="Work Experience">
+      <div className="max-w-4xl mx-auto space-y-5">
         {items.map((item, i) => (
-          <li key={i} className="relative">
-            <span className="absolute -left-[7px] top-3 h-3.5 w-3.5 rounded-full bg-accent ring-4 ring-background" />
-            <div className="flex flex-wrap items-baseline justify-between gap-2 mb-1">
-              <h3 className="font-display text-2xl md:text-3xl italic">{item.company}</h3>
-              <span className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
+          <div key={i} className="card-glow p-7 md:p-8">
+            <div className="flex flex-wrap items-baseline justify-between gap-2 mb-2">
+              <h3 className="font-display font-semibold text-xl md:text-2xl">{item.company}</h3>
+              <span className="text-xs text-muted-foreground uppercase tracking-widest font-mono">
                 {item.duration}
               </span>
             </div>
-            <p className="text-sm text-primary mb-4 italic font-display">{item.role}</p>
+            <p className="text-primary text-sm font-medium mb-4">{item.role}</p>
             <ul className="space-y-2 text-foreground/75">
               {item.bullets.map((b, j) => (
                 <li key={j} className="flex gap-3">
-                  <span className="text-accent mt-2 flex-shrink-0">•</span>
+                  <span className="text-primary mt-1.5 flex-shrink-0">▸</span>
                   <span>{b}</span>
                 </li>
               ))}
             </ul>
-          </li>
+          </div>
         ))}
-      </ol>
+      </div>
     </Section>
   );
 }
