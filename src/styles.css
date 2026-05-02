@@ -5,14 +5,15 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-hand: "Caveat", "Segoe Script", cursive;
 
-  --radius-sm: 2px;
-  --radius-md: 3px;
-  --radius-lg: 4px;
-  --radius-xl: 6px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+  --radius-xl: 22px;
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -34,43 +35,50 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-ring-offset-background: var(--background);
-  --color-terminal: var(--terminal);
-  --color-grid: var(--grid);
+  --color-ink: var(--ink);
+  --color-leaf: var(--leaf);
+  --color-clay: var(--clay);
+  --color-sun: var(--sun);
 }
 
 :root {
-  --radius: 3px;
+  --radius: 8px;
 
-  /* Dark technical palette — terminal / blueprint */
-  --background: oklch(0.16 0.015 260);      /* deep ink */
-  --foreground: oklch(0.94 0.01 250);       /* off-white */
+  /* Natural paper palette — warm, earthy, calm */
+  --background: oklch(0.965 0.012 85);       /* warm paper */
+  --foreground: oklch(0.24 0.02 50);         /* deep walnut ink */
 
-  --card: oklch(0.19 0.018 260);            /* raised surface */
+  --card: oklch(0.985 0.008 85);             /* lighter paper */
   --card-foreground: var(--foreground);
-  --popover: oklch(0.19 0.018 260);
+  --popover: oklch(0.985 0.008 85);
   --popover-foreground: var(--foreground);
 
-  --primary: oklch(0.78 0.16 180);          /* bright signal teal */
-  --primary-foreground: oklch(0.13 0.015 260);
+  /* Primary: forest moss — natural, grounded */
+  --primary: oklch(0.46 0.08 145);
+  --primary-foreground: oklch(0.97 0.01 85);
 
-  --secondary: oklch(0.22 0.02 260);
+  --secondary: oklch(0.92 0.018 80);
   --secondary-foreground: var(--foreground);
 
-  --muted: oklch(0.22 0.02 260);
-  --muted-foreground: oklch(0.62 0.02 250);
+  --muted: oklch(0.92 0.018 80);
+  --muted-foreground: oklch(0.48 0.025 60);
 
-  --accent: oklch(0.78 0.16 180);
-  --accent-foreground: oklch(0.13 0.015 260);
+  /* Clay accent — terracotta warmth */
+  --accent: oklch(0.66 0.13 45);
+  --accent-foreground: oklch(0.99 0 0);
 
-  --destructive: oklch(0.65 0.22 27);
+  --destructive: oklch(0.55 0.18 28);
   --destructive-foreground: oklch(0.99 0 0);
 
-  --border: oklch(0.28 0.018 260);
-  --input: oklch(0.28 0.018 260);
+  --border: oklch(0.84 0.018 75);
+  --input: oklch(0.84 0.018 75);
   --ring: var(--primary);
 
-  --terminal: oklch(0.82 0.2 145);          /* console green */
-  --grid: oklch(0.78 0.16 180 / 0.07);      /* teal-tinted grid */
+  /* Named natural tones (for direct use in components if needed) */
+  --ink: oklch(0.24 0.02 50);
+  --leaf: oklch(0.46 0.08 145);
+  --clay: oklch(0.66 0.13 45);
+  --sun: oklch(0.78 0.13 80);
 }
 
 @layer base {
@@ -88,60 +96,53 @@
     font-family: var(--font-sans);
     font-feature-settings: "ss01", "cv11";
     -webkit-font-smoothing: antialiased;
+    background-image:
+      radial-gradient(oklch(0.66 0.13 45 / 0.05) 1px, transparent 1px),
+      radial-gradient(oklch(0.46 0.08 145 / 0.04) 1px, transparent 1px);
+    background-size: 28px 28px, 38px 38px;
+    background-position: 0 0, 14px 19px;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
-    letter-spacing: -0.025em;
-    font-weight: 500;
+    letter-spacing: -0.02em;
+    font-weight: 400;
+    font-variation-settings: "opsz" 144, "SOFT" 50;
   }
 
   ::selection {
-    background-color: var(--primary);
-    color: white;
+    background-color: oklch(0.78 0.13 80 / 0.5);
+    color: var(--foreground);
   }
 }
 
 @layer utilities {
   .font-mono { font-family: var(--font-mono); }
+  .font-hand { font-family: var(--font-hand); }
+  .font-display { font-family: var(--font-display); }
 
-  /* Blueprint grid background */
-  .grid-bg {
-    background-image:
-      linear-gradient(to right, var(--grid) 1px, transparent 1px),
-      linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
-    background-size: 56px 56px;
-  }
-
-  .dot-grid {
-    background-image: radial-gradient(var(--grid) 1px, transparent 1px);
-    background-size: 20px 20px;
+  /* Hand-drawn underline using SVG-like wavy gradient */
+  .ink-underline {
+    background-image: linear-gradient(transparent 62%, oklch(0.78 0.13 80 / 0.55) 62%, oklch(0.78 0.13 80 / 0.55) 92%, transparent 92%);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    padding: 0 0.05em;
   }
 
-  /* Crosshair corners for technical cards */
-  .crosshair {
-    position: relative;
+  /* Soft paper card */
+  .paper {
+    background: var(--card);
+    border: 1px solid var(--border);
+    box-shadow:
+      0 1px 0 oklch(1 0 0 / 0.6) inset,
+      0 1px 2px oklch(0.24 0.02 50 / 0.04),
+      0 8px 24px -16px oklch(0.24 0.02 50 / 0.12);
   }
-  .crosshair::before,
-  .crosshair::after {
-    content: "";
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    border-color: var(--foreground);
-    pointer-events: none;
-    transition: border-color 0.3s ease;
+
+  /* Tiny dotted border for hand-stitched feel */
+  .stitch {
+    border: 1px dashed var(--border);
   }
-  .crosshair::before {
-    top: -1px; left: -1px;
-    border-top: 1px solid; border-left: 1px solid;
-  }
-  .crosshair::after {
-    bottom: -1px; right: -1px;
-    border-bottom: 1px solid; border-right: 1px solid;
-  }
-  .crosshair:hover::before,
-  .crosshair:hover::after { border-color: var(--primary); }
 
   .nav-link {
     position: relative;
@@ -151,13 +152,14 @@
     content: "";
     position: absolute;
     left: 0;
-    bottom: -4px;
-    height: 1px;
+    bottom: -3px;
+    height: 2px;
     width: 100%;
-    background: currentColor;
+    background: var(--accent);
+    border-radius: 2px;
     transform: scaleX(0);
     transform-origin: right;
-    transition: transform 0.35s cubic-bezier(0.65, 0, 0.35, 1);
+    transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1);
   }
   .nav-link:hover::after,
   .nav-link[data-active="true"]::after {
@@ -167,7 +169,7 @@
 
   .reveal {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(18px);
     transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
   }
   .reveal.in {
@@ -175,11 +177,15 @@
     transform: translateY(0);
   }
 
-  .tag-mono {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.3rem 0.7rem;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    font-size: 0.78rem;
   }
 }
 
@@ -193,19 +199,8 @@
   animation: word-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-@keyframes blink {
-  0%, 49% { opacity: 1; }
-  50%, 100% { opacity: 0; }
+@keyframes drift {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(2deg); }
 }
-.cursor-blink::after {
-  content: "_";
-  display: inline-block;
-  margin-left: 2px;
-  color: var(--primary);
-  animation: blink 1.1s steps(1) infinite;
-}
-
-@keyframes scan {
-  0% { transform: translateY(-100%); }
-  100% { transform: translateY(100%); }
-}
+.drift { animation: drift 6s ease-in-out infinite; }
