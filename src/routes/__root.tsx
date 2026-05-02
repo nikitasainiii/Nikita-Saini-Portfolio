@@ -39,12 +39,12 @@ export const Route = createRootRoute({
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Caveat:wght@500;600&display=swap",
       },
       {
         rel: "icon",
         type: "image/svg+xml",
-        href: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='6' fill='%23121420'/%3E%3Crect x='2' y='2' width='60' height='60' rx='4' fill='none' stroke='%235eead4' stroke-width='1.5'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' dominant-baseline='middle' font-family='ui-monospace,monospace' font-weight='600' font-size='26' fill='%235eead4'%3ENS%3C/text%3E%3C/svg%3E",
+        href: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23f5efe2'/%3E%3Ctext x='50%25' y='60%25' text-anchor='middle' dominant-baseline='middle' font-family='Georgia,serif' font-style='italic' font-weight='500' font-size='34' fill='%233a5a3f'%3Ens%3C/text%3E%3C/svg%3E",
       },
     ],
   }),
