@@ -34,8 +34,8 @@ export function Experience() {
   return (
     <Section id="experience" index="02" label="The Journey" title="Work Experience">
       <div className="max-w-4xl mx-auto space-y-5">
-        {items.map((item, i) => (
-          <div key={i} className="card-glow p-7 md:p-8">
+        {items.map((item) => (
+          <div key={item.company} className="card-glow p-7 md:p-8">
             <div className="flex flex-wrap items-baseline justify-between gap-2 mb-2">
               <h3 className="font-display font-semibold text-xl md:text-2xl">{item.company}</h3>
               <span className="text-xs text-muted-foreground uppercase tracking-widest font-mono">

@@ -27,7 +27,7 @@ export function Projects() {
   return (
     <Section id="projects" index="03" label="Featured Work" title="Selected Projects">
       <div className="max-w-5xl mx-auto space-y-6">
-        {projects.map((p, i) => (
+        {projects.map((p) => (
           <article
             key={p.title}
             className="card-glow grain overflow-hidden grid md:grid-cols-5 gap-0"
