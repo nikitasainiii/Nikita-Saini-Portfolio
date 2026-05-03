@@ -19,9 +19,9 @@ export function Section({
   const last = words[words.length - 1];
 
   return (
-    <section id={id} className="py-16 sm:py-20 md:py-28 lg:py-32 relative">
+    <section id={id} className="py-12 sm:py-16 md:py-20 lg:py-24 relative">
       <div className="max-w-7xl mx-auto px-5 sm:px-6 md:px-10">
-        <div className="text-center mb-12 sm:mb-14 md:mb-16 reveal">
+        <div className="text-center mb-8 sm:mb-10 md:mb-12 reveal">
           <span className="section-eyebrow">
             <span className="h-1 w-1 rounded-full bg-primary" />
             {label}
