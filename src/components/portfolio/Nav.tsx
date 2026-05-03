@@ -27,26 +27,26 @@ export function Nav() {
           : "bg-transparent"
       }`}
     >
-      <nav className="max-w-7xl mx-auto px-6 md:px-10 h-16 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2 font-display font-bold text-lg">
+      <nav className="max-w-7xl mx-auto px-5 sm:px-6 md:px-10 h-16 flex items-center justify-between gap-4">
+        <Link to="/" className="flex items-center gap-2 font-display font-bold text-base sm:text-lg shrink-0">
           <span className="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-primary text-primary-foreground text-sm">
             N
           </span>
           <span>Nikita S.</span>
         </Link>
-        <ul className="hidden md:flex items-center gap-8 text-sm text-foreground/70">
+        <ul className="hidden lg:flex items-center gap-7 text-sm text-foreground/70">
           {links.map((l) => (
             <li key={l.href}>
               <a href={l.href} className="nav-link">{l.label}</a>
             </li>
           ))}
         </ul>
-        <div className="hidden md:flex items-center gap-3">
-          <a href="/ResumeNikita.pdf" download className="btn-ghost">
-            <span aria-hidden>↓</span> Resume
+        <div className="flex items-center gap-2 sm:gap-3">
+          <a href="/ResumeNikita.pdf" download className="btn-ghost !py-2 !px-3 sm:!px-4 text-xs sm:text-sm">
+            <span aria-hidden>↓</span> <span className="hidden sm:inline">Resume</span>
           </a>
-          <a href="#projects" className="btn-primary">
-            <span aria-hidden>◉</span> View Work
+          <a href="#projects" className="btn-primary !py-2 !px-3 sm:!px-4 text-xs sm:text-sm">
+            <span aria-hidden>◉</span> <span className="hidden sm:inline">View Work</span><span className="sm:hidden">Work</span>
           </a>
         </div>
       </nav>

@@ -121,7 +121,7 @@ export function Contact() {
       </Section>
 
       <footer className="border-t border-border/60 py-8">
-        <div className="max-w-7xl mx-auto px-6 md:px-10 flex flex-wrap justify-between gap-4 text-sm text-muted-foreground">
+        <div className="max-w-7xl mx-auto px-5 sm:px-6 md:px-10 flex flex-wrap justify-between gap-3 text-xs sm:text-sm text-muted-foreground">
           <p>© 2026 Nikita Saini · Built with care</p>
           <p>Manav Rachna University · Class of '26</p>
         </div>
