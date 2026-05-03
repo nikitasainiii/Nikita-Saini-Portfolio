@@ -41,8 +41,7 @@ export function Hero() {
         </p>
 
         <div
-          className="mt-8 sm:mt-10 flex flex-wrap justify-center gap-3 word-in"
-          style={{ animationDelay: "0.85s" }}
+          className="mt-8 sm:mt-10 flex flex-row flex-wrap items-center justify-center gap-3 reveal in"
         >
           <a href="#projects" className="btn-primary">
             <span aria-hidden>◉</span> View Projects
@@ -54,8 +53,7 @@ export function Hero() {
 
         {/* Stat cards */}
         <div
-          className="mt-12 sm:mt-16 grid grid-cols-3 gap-3 sm:gap-4 max-w-3xl mx-auto word-in"
-          style={{ animationDelay: "1s" }}
+          className="mt-12 sm:mt-16 grid grid-cols-3 gap-3 sm:gap-4 max-w-3xl mx-auto reveal in"
         >
           {[
             { icon: "★", value: "300+", label: "Problems Solved" },
