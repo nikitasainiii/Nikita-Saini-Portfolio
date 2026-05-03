@@ -34,9 +34,15 @@ export function Contact() {
     }
     setStatus("sending");
     const subject = encodeURIComponent(`Portfolio enquiry from ${parsed.data.name}`);
-    const body = encodeURIComponent(`${parsed.data.message}\n\n— ${parsed.data.name} (${parsed.data.email})`);
-    window.location.href = `mailto:saininikita711@gmail.com?subject=${subject}&body=${body}`;
+    const body = encodeURIComponent(
+      `${parsed.data.message}\n\n— ${parsed.data.name} (${parsed.data.email})`
+    );
+    window.open(
+      `mailto:saininikita711@gmail.com?subject=${subject}&body=${body}`,
+      "_self"
+    );
     setStatus("ok");
+    (e.currentTarget as HTMLFormElement).reset();
   };
 
   return (
