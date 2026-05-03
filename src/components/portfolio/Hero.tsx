@@ -1,14 +1,14 @@
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden hero-aura">
+    <section className="relative min-h-[100svh] flex items-center justify-center pt-28 pb-20 overflow-hidden hero-aura">
       {/* Floating ambient orbs */}
-      <div className="pointer-events-none absolute top-1/4 left-10 h-72 w-72 rounded-full bg-primary/15 blur-3xl float" />
+      <div className="pointer-events-none absolute top-1/4 -left-10 sm:left-10 h-56 w-56 sm:h-72 sm:w-72 rounded-full bg-primary/15 blur-3xl float" />
       <div
-        className="pointer-events-none absolute bottom-10 right-10 h-80 w-80 rounded-full bg-accent/15 blur-3xl float"
+        className="pointer-events-none absolute bottom-10 -right-10 sm:right-10 h-64 w-64 sm:h-80 sm:w-80 rounded-full bg-accent/15 blur-3xl float"
         style={{ animationDelay: "2s" }}
       />
 
-      <div className="relative max-w-5xl mx-auto px-6 md:px-10 w-full text-center">
+      <div className="relative max-w-5xl mx-auto px-5 sm:px-6 md:px-10 w-full text-center">
         <span
           className="section-eyebrow word-in"
           style={{ animationDelay: "0.05s" }}
@@ -17,7 +17,7 @@ export function Hero() {
           Available for full-time roles · 2026
         </span>
 
-        <h1 className="mt-8 font-display font-bold text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[1.02] tracking-tight">
+        <h1 className="mt-6 sm:mt-8 font-display font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-[1.05] tracking-tight">
           <span className="word-in inline-block" style={{ animationDelay: "0.15s" }}>
             CS Engineer
           </span>{" "}
@@ -31,16 +31,17 @@ export function Hero() {
         </h1>
 
         <p
-          className="mt-8 max-w-2xl mx-auto text-base md:text-lg text-foreground/70 leading-relaxed word-in"
+          className="mt-6 sm:mt-8 max-w-2xl mx-auto text-sm sm:text-base md:text-lg text-foreground/70 leading-relaxed word-in"
           style={{ animationDelay: "0.65s" }}
         >
           Hi, I'm <span className="text-foreground font-medium">Nikita Saini</span> —
           a final-year Computer Science student at Manav Rachna University, currently
-          interning at KPMG India. I build responsive web apps and explore data with care.
+          interning at <span className="text-foreground font-medium">KPMG India</span>.
+          I build responsive web apps and explore data with care.
         </p>
 
         <div
-          className="mt-10 flex flex-wrap justify-center gap-3 word-in"
+          className="mt-8 sm:mt-10 flex flex-wrap justify-center gap-3 word-in"
           style={{ animationDelay: "0.85s" }}
         >
           <a href="#projects" className="btn-primary">
@@ -53,7 +54,7 @@ export function Hero() {
 
         {/* Stat cards */}
         <div
-          className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto word-in"
+          className="mt-12 sm:mt-16 grid grid-cols-3 gap-3 sm:gap-4 max-w-3xl mx-auto word-in"
           style={{ animationDelay: "1s" }}
         >
           {[
@@ -61,10 +62,10 @@ export function Hero() {
             { icon: "◆", value: "3", label: "Internships" },
             { icon: "✦", value: "1", label: "Patent Filed" },
           ].map((s) => (
-            <div key={s.label} className="card-glow grain p-6 text-center">
-              <div className="text-primary text-2xl mb-2">{s.icon}</div>
-              <div className="font-display text-3xl font-bold text-gradient">{s.value}</div>
-              <div className="text-xs text-muted-foreground mt-1 uppercase tracking-widest">
+            <div key={s.label} className="card-glow grain p-4 sm:p-6 text-center">
+              <div className="text-primary text-xl sm:text-2xl mb-1 sm:mb-2">{s.icon}</div>
+              <div className="font-display text-2xl sm:text-3xl font-bold text-gradient">{s.value}</div>
+              <div className="text-[10px] sm:text-xs text-muted-foreground mt-1 uppercase tracking-widest leading-tight">
                 {s.label}
               </div>
             </div>

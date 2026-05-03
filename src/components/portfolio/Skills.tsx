@@ -13,7 +13,7 @@ export function Skills() {
     <Section id="skills" index="04" label="Toolkit" title="Technical Skills">
       <div className="max-w-5xl mx-auto space-y-4">
         {groups.map((g) => (
-          <div key={g.key} className="card-glow p-6">
+          <div key={g.key} className="card-glow p-5 sm:p-6">
             <div className="flex items-center gap-3 mb-4">
               <span className="text-primary text-lg">{g.icon}</span>
               <h3 className="font-display font-semibold text-lg">{g.key}</h3>
