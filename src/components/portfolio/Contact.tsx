@@ -42,7 +42,7 @@ export function Contact() {
   return (
     <>
       <Section id="contact" index="07" label="Get in Touch" title="Let's build something good">
-        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-6">
+        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-5 sm:gap-6">
           {/* Contact info */}
           <div className="space-y-3">
             {contacts.map((c) => (
