@@ -116,6 +116,9 @@ export function Contact() {
               </label>
             </div>
             {error && <p className="text-sm text-destructive">{error}</p>}
+            {status === "ok" && (
+              <p className="text-sm text-primary">Opening your email app… thank you!</p>
+            )}
             <button
               type="submit"
               disabled={status === "sending"}
