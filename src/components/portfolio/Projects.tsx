@@ -10,6 +10,7 @@ const projects = [
       "An intelligent upgrade to a conventional Doctor Appointment Booking System — transforming it from a standard CRUD app into a data-driven resource management platform that forecasts no-shows and dynamically recalibrates clinic schedules to maximise operational efficiency.",
     tech: ["Python", "SQL", "React.js", "Tailwind CSS"],
     github: "https://github.com/nikitasainiii",
+    demo: "https://demo.example.com",
     accent: "from-primary/30 to-accent/20",
   },
   {
@@ -21,6 +22,7 @@ const projects = [
       "An end-to-end web platform that aggregates live environmental data, runs real-time preprocessing pipelines, and delivers predictive visualisations to support critical decisions during natural disasters — including safe-zone identification and resource allocation.",
     tech: ["React.js", "Python", "SQL"],
     github: "https://github.com/nikitasainiii",
+    demo: "https://demo.example.com",
     accent: "from-accent/30 to-primary/20",
   },
   {
@@ -32,6 +34,7 @@ const projects = [
       "A specialised web application that lets developers and data practitioners audit machine learning models — uploading datasets and evaluating them against common bias patterns, failure modes, and security vulnerabilities inherent to ML pipelines.",
     tech: ["Python", "React.js", "Power BI", "Tableau"],
     github: "https://github.com/nikitasainiii",
+    demo: "https://demo.example.com",
     accent: "from-primary/25 to-accent/25",
   },
 ];
@@ -99,9 +102,14 @@ export function Projects() {
                   >
                     <span aria-hidden>◉</span> GitHub
                   </a>
-                  <span className="btn-ghost text-sm py-2 px-4 opacity-60 cursor-default">
-                    <span aria-hidden>↗</span> Demo soon
-                  </span>
+                  <a
+                    href={p.demo}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn-ghost text-sm py-2 px-4"
+                  >
+                    <span aria-hidden>↗</span> Demo
+                  </a>
                 </div>
               </div>
             </div>

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { z } from "zod";
 import { Section } from "./Section";
+import { toast } from "sonner";
 
 const schema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100),
@@ -20,29 +21,71 @@ export function Contact() {
   const [error, setError] = useState<string | null>(null);
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    const form = e.currentTarget;
     e.preventDefault();
     setError(null);
-    const fd = new FormData(e.currentTarget);
+    const fd = new FormData(form);
     const parsed = schema.safeParse({
       name: fd.get("name"),
       email: fd.get("email"),
       message: fd.get("message"),
     });
+
     if (!parsed.success) {
       setError(parsed.error.issues[0]?.message ?? "Invalid input");
+      toast.error(parsed.error.issues[0]?.message ?? "Please check your input");
       return;
     }
+
     setStatus("sending");
-    const subject = encodeURIComponent(`Portfolio enquiry from ${parsed.data.name}`);
-    const body = encodeURIComponent(
-      `${parsed.data.message}\n\n— ${parsed.data.name} (${parsed.data.email})`
-    );
-    window.open(
-      `mailto:saininikita711@gmail.com?subject=${subject}&body=${body}`,
-      "_self"
-    );
-    setStatus("ok");
-    (e.currentTarget as HTMLFormElement).reset();
+    
+    try {
+      // Use environment variable for the access key, fallback to a placeholder
+      // Users can get a free key at https://web3forms.com/
+      const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+      
+      if (!accessKey) {
+        throw new Error("API Key missing. Please check your .env file and restart the server.");
+      }
+
+      console.log("Using Access Key (first 5 chars):", accessKey.substring(0, 5));
+      
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: accessKey,
+          name: parsed.data.name,
+          email: parsed.data.email,
+          message: parsed.data.message,
+          subject: `Portfolio enquiry from ${parsed.data.name}`,
+          from_name: parsed.data.name,
+          replyto: parsed.data.email,
+          botcheck: fd.get("botcheck"),
+        }),
+      });
+
+      const result = await response.json();
+      console.log("Web3Forms Result:", result);
+
+      if (result.success) {
+        setStatus("ok");
+        toast.success("Message sent successfully! I'll get back to you soon.");
+        form.reset();
+      } else {
+        setError(result.message || "Something went wrong");
+        toast.error(result.message || "Something went wrong");
+        setStatus("idle");
+      }
+    } catch (err) {
+      console.error("Form submission error:", err);
+      setStatus("idle");
+      setError("Failed to send message. Please try again later.");
+      toast.error("Failed to send message. Please try again.");
+    }
   };
 
   return (
@@ -77,6 +120,7 @@ export function Contact() {
 
           {/* Form */}
           <form onSubmit={onSubmit} className="card-glow p-7 space-y-5">
+            <input type="checkbox" name="botcheck" className="hidden" style={{ display: "none" }} />
             <div>
               <label className="block">
                 <span className="text-xs uppercase tracking-widest text-muted-foreground">Name</span>
@@ -117,7 +161,7 @@ export function Contact() {
             </div>
             {error && <p className="text-sm text-destructive">{error}</p>}
             {status === "ok" && (
-              <p className="text-sm text-primary">Opening your email app… thank you!</p>
+              <p className="text-sm text-primary">Message sent! Thank you!</p>
             )}
             <button
               type="submit"
@@ -133,8 +177,8 @@ export function Contact() {
 
       <footer className="border-t border-border/60 py-8">
         <div className="max-w-7xl mx-auto px-5 sm:px-6 md:px-10 flex flex-wrap justify-between gap-3 text-xs sm:text-sm text-muted-foreground">
-          <p>© 2026 Nikita Saini · Built with care</p>
-          <p>Manav Rachna University · Class of '26</p>
+          <p>Made by Nikita Saini</p>
+          <p>© 2026 All rights reserved.</p>
         </div>
       </footer>
     </>
