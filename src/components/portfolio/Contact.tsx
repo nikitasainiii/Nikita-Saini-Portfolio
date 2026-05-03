@@ -42,27 +42,29 @@ export function Contact() {
   return (
     <>
       <Section id="contact" index="07" label="Get in Touch" title="Let's build something good">
-        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-5 sm:gap-6">
+        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-5 sm:gap-6 items-stretch">
           {/* Contact info */}
-          <div className="space-y-3">
-            {contacts.map((c) => (
-              <a
-                key={c.label}
-                href={c.href ?? "#"}
-                target={c.href?.startsWith("http") ? "_blank" : undefined}
-                rel="noreferrer"
-                className="card-glow p-5 flex items-center gap-4 group"
-              >
-                <span className="h-11 w-11 rounded-xl bg-primary/15 text-primary flex items-center justify-center text-lg">
-                  {c.icon}
-                </span>
-                <div>
-                  <p className="text-xs text-muted-foreground uppercase tracking-widest">{c.label}</p>
-                  <p className="font-medium group-hover:text-primary transition-colors">{c.value}</p>
-                </div>
-              </a>
-            ))}
-            <a href="/ResumeNikita.pdf" download className="btn-primary w-full justify-center mt-2">
+          <div className="flex flex-col gap-3 h-full">
+            <div className="flex flex-col gap-3 flex-1">
+              {contacts.map((c) => (
+                <a
+                  key={c.label}
+                  href={c.href ?? "#"}
+                  target={c.href?.startsWith("http") ? "_blank" : undefined}
+                  rel="noreferrer"
+                  className="card-glow p-5 flex items-center gap-4 group flex-1"
+                >
+                  <span className="h-11 w-11 rounded-xl bg-primary/15 text-primary flex items-center justify-center text-lg shrink-0">
+                    {c.icon}
+                  </span>
+                  <div className="min-w-0">
+                    <p className="text-xs text-muted-foreground uppercase tracking-widest">{c.label}</p>
+                    <p className="font-medium group-hover:text-primary transition-colors truncate">{c.value}</p>
+                  </div>
+                </a>
+              ))}
+            </div>
+            <a href="/ResumeNikita.pdf" download className="btn-primary w-full justify-center">
               <span aria-hidden>↓</span> Download Resume
             </a>
           </div>
