@@ -19,14 +19,14 @@ export function Section({
   const last = words[words.length - 1];
 
   return (
-    <section id={id} className="py-24 md:py-32 relative">
-      <div className="max-w-7xl mx-auto px-6 md:px-10">
-        <div className="text-center mb-16 reveal">
+    <section id={id} className="py-16 sm:py-20 md:py-28 lg:py-32 relative">
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 md:px-10">
+        <div className="text-center mb-12 sm:mb-14 md:mb-16 reveal">
           <span className="section-eyebrow">
             <span className="h-1 w-1 rounded-full bg-primary" />
             {label}
           </span>
-          <h2 className="mt-5 font-display font-bold text-4xl md:text-5xl lg:text-6xl tracking-tight">
+          <h2 className="mt-5 font-display font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight">
             {lead} <span className="text-gradient">{last}</span>
           </h2>
         </div>
