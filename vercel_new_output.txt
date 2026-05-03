@@ -1,0 +1,72 @@
+Vercel CLI 48.12.0
+The "--name" option is deprecated (https://vercel.link/name-flag)
+Loading scopes…
+Searching for existing projects…
+Auto-detected Project Settings (Vite):
+- Build Command: vite build
+- Development Command: vite --port $PORT
+- Install Command: `yarn install`, `pnpm install`, `npm install`, or `bun install`
+- Output Directory: dist
+Linked to saininikita711-3733s-projects/nikita-saini-portfolio (created .vercel)
+Retrieving project…
+> Overwriting existing .env.local file
+> Downloading `development` Environment Variables for saininikita711-3733s-projects/nikita-saini-portfolio
+Downloading
+
+Changes:
++ VERCEL_OIDC_TOKEN (Updated)
+
+Updated .env.local file  [474ms]
+> Connecting GitHub repository: https://github.com/nikitasainiii/Nikita-Saini-Portfolio
+> Connected
+Deploying saininikita711-3733s-projects/nikita-saini-portfolio
+Uploading [--------------------] (0.0B/3.9KB)
+Uploading [====================] (3.9KB/3.9KB)
+Inspect: https://vercel.com/saininikita711-3733s-projects/nikita-saini-portfolio/9pvR5bsHqiEb6r1AzrP16uukiifk [3s]
+Production: https://nikita-saini-portfolio-i2nqnaot7-saininikita711-3733s-projects.vercel.app [3s]
+https://nikita-saini-portfolio-i2nqnaot7-saininikita711-3733s-projects.vercel.appBuilding...
+Building...
+Building: Running build in Washington, D.C., USA (East) – iad1
+Building: Build machine configuration: 2 cores, 8 GB
+Building: Retrieving list of deployment files...
+Building: Previous build caches not available.
+Building: Downloading 103 deployment files...
+Building: Running "vercel build"
+Building: Vercel CLI 51.6.1
+Building: Installing dependencies...
+Building: npm warn deprecated whatwg-encoding@3.1.1: Use @exodus/bytes instead for a more spec-conformant and faster implementation
+Building: added 516 packages in 12s
+Building: 123 packages are looking for funding
+Building: run `npm fund` for details
+Building: Running "npm run build"
+Building: > build
+Building: > vite build
+Building: vite v7.3.2 building client environment for production...
+Building: transforming...
+Building: ✓ 166 modules transformed.
+Building: rendering chunks...
+Building: computing gzip size...
+Building: dist/client/.assetsignore                 0.02 kB
+Building: dist/client/wrangler.json                 1.17 kB │ gzip:   0.59 kB
+Building: dist/client/assets/styles-D6RS0bRg.css   86.74 kB │ gzip:  14.53 kB
+Building: dist/client/assets/index-B15H8yBs.js     77.84 kB │ gzip:  20.00 kB
+Building: dist/client/assets/index-Dd2P_U-J.js    358.34 kB │ gzip: 113.18 kB
+Building: ✓ built in 2.69s
+Building: vite v7.3.2 building ssr environment for production...
+Building: transforming...
+Building: "createRequestHandler", "defineHandlerCallback", "transformPipeableStreamWithRouter" and "transformReadableStreamWithRouter" are imported from external module "@tanstack/router-core/ssr/server" but never used in "node_modules/@tanstack/start-server-core/dist/esm/index.js".
+Building: "RawStream" is imported from external module "@tanstack/router-core" but never used in "node_modules/@tanstack/start-client-core/dist/esm/index.js".
+Building: "hydrate" and "json" are imported from external module "@tanstack/router-core/ssr/client" but never used in "node_modules/@tanstack/start-client-core/dist/esm/index.js".
+Building: ✓ 58 modules transformed.
+Building: rendering chunks...
+Building: dist/server/assets/start-HYkvq4Ni.js                                0.06 kB
+Building: dist/server/assets/__23tanstack-start-plugin-adapters-Cwee5PKy.js   0.14 kB
+Building: dist/server/assets/_tanstack-start-manifest_v-BKzaZ9HA.js           0.39 kB
+Building: dist/server/assets/router-C-ci-K_D.js                               6.93 kB
+Building: dist/server/assets/index-BR5xZuRG.js                               35.46 kB
+Building: dist/server/server.js                                              38.64 kB
+Building: ✓ built in 513ms
+Building: Build Completed in /vercel/output [19s]
+Building: Deploying outputs...
+[2K[1A[2K[GProduction: https://nikita-saini-portfolio-i2nqnaot7-saininikita711-3733s-projects.vercel.app [30s]
+Completing...
