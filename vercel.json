@@ -1,12 +1,6 @@
 {
   "version": 2,
-  "builds": [
-    { "src": "dist/server/server.js", "use": "@vercel/node" },
-    { "src": "dist/client/**", "use": "@vercel/static" }
-  ],
   "rewrites": [
-    { "source": "/assets/(.*)", "destination": "/dist/client/assets/$1" },
-    { "source": "/ResumeNikita.pdf", "destination": "/dist/client/ResumeNikita.pdf" },
-    { "source": "/(.*)", "destination": "/dist/server/server.js" }
+    { "source": "/(.*)", "destination": "/api/index" }
   ]
 }
