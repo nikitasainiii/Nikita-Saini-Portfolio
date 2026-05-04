@@ -6,4 +6,12 @@
 // You can pass additional config via defineConfig({ vite: { ... } }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
-export default defineConfig();
+export default defineConfig({
+  // TanStack Start uses Nitro for deployments. 
+  // This preset ensures it builds correctly for Vercel.
+  start: {
+    server: {
+      preset: "vercel",
+    },
+  },
+});
