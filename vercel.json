@@ -1,10 +1,8 @@
 {
   "version": 2,
-  "public": true,
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist",
   "rewrites": [
-    { "source": "/assets/(.*)", "destination": "/client/assets/$1" },
-    { "source": "/(.*)", "destination": "/server/server.js" }
+    { "source": "/assets/(.*)", "destination": "/dist/client/assets/$1" },
+    { "source": "/ResumeNikita.pdf", "destination": "/dist/client/ResumeNikita.pdf" },
+    { "source": "/(.*)", "destination": "/api/index" }
   ]
 }
