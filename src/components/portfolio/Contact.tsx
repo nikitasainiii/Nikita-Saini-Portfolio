@@ -10,10 +10,20 @@ const schema = z.object({
 });
 
 const contacts = [
-  { icon: "✉", label: "Email", value: "saininikita711@gmail.com", href: "mailto:saininikita711@gmail.com" },
+  {
+    icon: "✉",
+    label: "Email",
+    value: "saininikita711@gmail.com",
+    href: "mailto:saininikita711@gmail.com",
+  },
   { icon: "📍", label: "Location", value: "Gurugram, India" },
   { icon: "◉", label: "GitHub", value: "@nikitasainiii", href: "https://github.com/nikitasainiii" },
-  { icon: "in", label: "LinkedIn", value: "@saininikita711", href: "https://www.linkedin.com/in/saininikita711" },
+  {
+    icon: "in",
+    label: "LinkedIn",
+    value: "@saininikita711",
+    href: "https://www.linkedin.com/in/saininikita711",
+  },
 ];
 
 export function Contact() {
@@ -107,13 +117,21 @@ export function Contact() {
                     {c.icon}
                   </span>
                   <div className="min-w-0">
-                    <p className="text-xs text-muted-foreground uppercase tracking-widest">{c.label}</p>
-                    <p className="font-medium group-hover:text-primary transition-colors truncate">{c.value}</p>
+                    <p className="text-xs text-muted-foreground uppercase tracking-widest">
+                      {c.label}
+                    </p>
+                    <p className="font-medium group-hover:text-primary transition-colors truncate">
+                      {c.value}
+                    </p>
                   </div>
                 </a>
               ))}
             </div>
-            <a href="/ResumeNikita.pdf" download className="btn-primary w-full justify-center">
+            <a
+              href="/ResumeNikita.pdf"
+              download="ResumeNikita.pdf"
+              className="btn-primary w-full justify-center"
+            >
               <span aria-hidden>↓</span> Download Resume
             </a>
           </div>
@@ -122,7 +140,9 @@ export function Contact() {
           <form onSubmit={onSubmit} className="card-glow p-7 space-y-5">
             <div>
               <label className="block">
-                <span className="text-xs uppercase tracking-widest text-muted-foreground">Name</span>
+                <span className="text-xs uppercase tracking-widest text-muted-foreground">
+                  Name
+                </span>
                 <input
                   name="name"
                   required
@@ -135,7 +155,9 @@ export function Contact() {
             </div>
             <div>
               <label className="block">
-                <span className="text-xs uppercase tracking-widest text-muted-foreground">Email</span>
+                <span className="text-xs uppercase tracking-widest text-muted-foreground">
+                  Email
+                </span>
                 <input
                   name="email"
                   type="email"
@@ -149,7 +171,9 @@ export function Contact() {
             </div>
             <div>
               <label className="block">
-                <span className="text-xs uppercase tracking-widest text-muted-foreground">Message</span>
+                <span className="text-xs uppercase tracking-widest text-muted-foreground">
+                  Message
+                </span>
                 <textarea
                   name="message"
                   required
@@ -162,11 +186,11 @@ export function Contact() {
               </label>
             </div>
 
-            {errorMsg && status !== "ok" && (
-              <p className="text-sm text-destructive">{errorMsg}</p>
-            )}
+            {errorMsg && status !== "ok" && <p className="text-sm text-destructive">{errorMsg}</p>}
             {status === "ok" && (
-              <p className="text-sm text-primary font-medium">✓ Message sent! Thank you, I'll be in touch soon.</p>
+              <p className="text-sm text-primary font-medium">
+                ✓ Message sent! Thank you, I'll be in touch soon.
+              </p>
             )}
 
             <button

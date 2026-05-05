@@ -23,13 +23,14 @@ export function Nav() {
   return (
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-background/75 backdrop-blur-xl border-b border-border/60"
-          : "bg-transparent"
+        scrolled ? "bg-background/75 backdrop-blur-xl border-b border-border/60" : "bg-transparent"
       }`}
     >
       <nav className="max-w-7xl mx-auto px-5 sm:px-6 md:px-10 h-16 flex items-center justify-between gap-4">
-        <Link to="/" className="flex items-center gap-2 font-display font-bold text-base sm:text-lg shrink-0">
+        <Link
+          to="/"
+          className="flex items-center gap-2 font-display font-bold text-base sm:text-lg shrink-0"
+        >
           <span className="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-primary text-primary-foreground text-sm">
             N
           </span>
@@ -38,16 +39,23 @@ export function Nav() {
         <ul className="hidden lg:flex items-center gap-7 text-sm text-foreground/70">
           {links.map((l) => (
             <li key={l.href}>
-              <a href={l.href} className="nav-link">{l.label}</a>
+              <a href={l.href} className="nav-link">
+                {l.label}
+              </a>
             </li>
           ))}
         </ul>
         <div className="flex items-center gap-2 sm:gap-3">
-          <a href="/ResumeNikita.pdf" download className="btn-ghost !py-2 !px-3 sm:!px-4 text-xs sm:text-sm">
+          <a
+            href="/ResumeNikita.pdf"
+            download="ResumeNikita.pdf"
+            className="btn-ghost !py-2 !px-3 sm:!px-4 text-xs sm:text-sm"
+          >
             <span aria-hidden>↓</span> <span className="hidden sm:inline">Resume</span>
           </a>
           <a href="#projects" className="btn-primary !py-2 !px-3 sm:!px-4 text-xs sm:text-sm">
-            <span aria-hidden>◉</span> <span className="hidden sm:inline">View Work</span><span className="sm:hidden">Work</span>
+            <span aria-hidden>◉</span> <span className="hidden sm:inline">View Work</span>
+            <span className="sm:hidden">Work</span>
           </a>
         </div>
       </nav>
