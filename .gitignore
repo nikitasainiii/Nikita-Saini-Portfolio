@@ -35,5 +35,9 @@ dist-ssr
 # Environment files - NEVER commit these
 .env
 .env.*
+!.env.example
 .env.local
 .env.*.local
+
+# Tracked helper for Vercel Build Output API
+!scripts/vercel-output.mjs

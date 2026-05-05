@@ -55,17 +55,14 @@ export const Route = createRootRoute({
 });
 
 function RootShell({ children }: { children: React.ReactNode }) {
+  // SPA/static hosting: the app mounts under #root in index.html, not a full document shell.
   return (
-    <html lang="en">
-      <head>
-        <HeadContent />
-      </head>
-      <body>
-        {children}
-        <Toaster />
-        <Scripts />
-      </body>
-    </html>
+    <>
+      <HeadContent />
+      {children}
+      <Toaster />
+      <Scripts />
+    </>
   );
 }
 
