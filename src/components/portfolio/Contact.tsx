@@ -17,13 +17,14 @@ const contacts = [
 ];
 
 export function Contact() {
-  const [status, setStatus] = useState<"idle" | "sending" | "ok">("idle");
-  const [error, setError] = useState<string | null>(null);
+  const [status, setStatus] = useState<"idle" | "sending" | "ok" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     const form = e.currentTarget;
     e.preventDefault();
-    setError(null);
+    setErrorMsg(null);
+
     const fd = new FormData(form);
     const parsed = schema.safeParse({
       name: fd.get("name"),
@@ -32,24 +33,22 @@ export function Contact() {
     });
 
     if (!parsed.success) {
-      setError(parsed.error.issues[0]?.message ?? "Invalid input");
-      toast.error(parsed.error.issues[0]?.message ?? "Please check your input");
+      const msg = parsed.error.issues[0]?.message ?? "Invalid input";
+      setErrorMsg(msg);
+      toast.error(msg);
       return;
     }
 
     setStatus("sending");
-    
+
     try {
-      // Use environment variable for the access key, fallback to a placeholder
-      // Users can get a free key at https://web3forms.com/
+      // Get the access key from environment variable
       const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
-      
+
       if (!accessKey) {
-        throw new Error("API Key missing. Please check your .env file and restart the server.");
+        throw new Error("Contact form is not configured. Please set VITE_WEB3FORMS_ACCESS_KEY.");
       }
 
-      console.log("Using Access Key (first 5 chars):", accessKey.substring(0, 5));
-      
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
@@ -64,26 +63,27 @@ export function Contact() {
           subject: `Portfolio enquiry from ${parsed.data.name}`,
           from_name: parsed.data.name,
           replyto: parsed.data.email,
-          botcheck: fd.get("botcheck"),
         }),
       });
 
+      if (!response.ok) {
+        throw new Error(`HTTP error: ${response.status}`);
+      }
+
       const result = await response.json();
-      console.log("Web3Forms Result:", result);
 
       if (result.success) {
         setStatus("ok");
-        toast.success("Message sent successfully! I'll get back to you soon.");
+        toast.success("Message sent! I'll get back to you soon.");
         form.reset();
       } else {
-        setError(result.message || "Something went wrong");
-        toast.error(result.message || "Something went wrong");
-        setStatus("idle");
+        throw new Error(result.message || "Submission failed");
       }
     } catch (err) {
       console.error("Form submission error:", err);
-      setStatus("idle");
-      setError("Failed to send message. Please try again later.");
+      const msg = err instanceof Error ? err.message : "Failed to send message. Please try again.";
+      setErrorMsg(msg);
+      setStatus("error");
       toast.error("Failed to send message. Please try again.");
     }
   };
@@ -120,7 +120,6 @@ export function Contact() {
 
           {/* Form */}
           <form onSubmit={onSubmit} className="card-glow p-7 space-y-5">
-            <input type="checkbox" name="botcheck" className="hidden" style={{ display: "none" }} />
             <div>
               <label className="block">
                 <span className="text-xs uppercase tracking-widest text-muted-foreground">Name</span>
@@ -129,7 +128,8 @@ export function Contact() {
                   required
                   maxLength={100}
                   placeholder="Your name"
-                  className="mt-2 w-full bg-background/40 border border-border rounded-lg px-4 py-3 outline-none focus:border-primary transition-colors"
+                  disabled={status === "sending"}
+                  className="mt-2 w-full bg-background/40 border border-border rounded-lg px-4 py-3 outline-none focus:border-primary transition-colors disabled:opacity-60"
                 />
               </label>
             </div>
@@ -142,7 +142,8 @@ export function Contact() {
                   required
                   maxLength={255}
                   placeholder="your.email@example.com"
-                  className="mt-2 w-full bg-background/40 border border-border rounded-lg px-4 py-3 outline-none focus:border-primary transition-colors"
+                  disabled={status === "sending"}
+                  className="mt-2 w-full bg-background/40 border border-border rounded-lg px-4 py-3 outline-none focus:border-primary transition-colors disabled:opacity-60"
                 />
               </label>
             </div>
@@ -155,22 +156,35 @@ export function Contact() {
                   maxLength={1000}
                   rows={5}
                   placeholder="Tell me about your project or opportunity…"
-                  className="mt-2 w-full bg-background/40 border border-border rounded-lg px-4 py-3 outline-none focus:border-primary transition-colors resize-none"
+                  disabled={status === "sending"}
+                  className="mt-2 w-full bg-background/40 border border-border rounded-lg px-4 py-3 outline-none focus:border-primary transition-colors resize-none disabled:opacity-60"
                 />
               </label>
             </div>
-            {error && <p className="text-sm text-destructive">{error}</p>}
-            {status === "ok" && (
-              <p className="text-sm text-primary">Message sent! Thank you!</p>
+
+            {errorMsg && status !== "ok" && (
+              <p className="text-sm text-destructive">{errorMsg}</p>
             )}
+            {status === "ok" && (
+              <p className="text-sm text-primary font-medium">✓ Message sent! Thank you, I'll be in touch soon.</p>
+            )}
+
             <button
               type="submit"
-              disabled={status === "sending"}
-              className="btn-primary w-full justify-center disabled:opacity-60"
+              disabled={status === "sending" || status === "ok"}
+              className="btn-primary w-full justify-center disabled:opacity-60 disabled:cursor-not-allowed"
             >
               <span aria-hidden>✉</span>
-              {status === "sending" ? "Sending…" : "Send Message"}
+              {status === "sending" ? "Sending…" : status === "ok" ? "Sent!" : "Send Message"}
             </button>
+
+            {/* Fallback direct email link */}
+            <p className="text-xs text-center text-muted-foreground">
+              Or email directly:{" "}
+              <a href="mailto:saininikita711@gmail.com" className="text-primary hover:underline">
+                saininikita711@gmail.com
+              </a>
+            </p>
           </form>
         </div>
       </Section>
